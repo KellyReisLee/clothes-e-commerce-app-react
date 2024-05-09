@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase';
-
+import FormInput from '../FormInput/FormInput';
+import './sign-up-form.styles.scss'
+import Button from '../Button/Button';
 
 const SignUpForm = () => {
   const [data, setData] = useState({
@@ -17,7 +19,6 @@ const SignUpForm = () => {
     setData({ ...data, [name]: value })
 
   }
-
 
   console.log(data);
   const handleSubmit = async (e) => {
@@ -44,29 +45,52 @@ const SignUpForm = () => {
       }
       console.log('Failed creating user', error);
     }
-
-
   }
   return (
-    <div>
-      <h1>Sign Up with your email and password</h1>
+    <div className='sign-up-container'>
+      <h2>Don't have an Account?</h2>
+      <span>Sign Up with your email and password</span>
       <form onSubmit={handleSubmit}>
-        {/* Display name */}
-        <label htmlFor='displayName'>Display Name</label>
-        <input name='displayName' onChange={handleChange} value={data.displayName} type='text' id='displayName' required />
+        {/* Display Name */}
+        <FormInput
+          label='Name'
+          name='displayName'
+          onChange={handleChange}
+          value={data.displayName}
+          type='text'
+          required
+        />
 
         {/* Email */}
-        <label htmlFor='email'>Email</label>
-        <input name='email' onChange={handleChange} value={data.email} type='email' id='email' required />
-        {/* Password */}
-        <label htmlFor='password'>Password</label>
-        <input name='password' onChange={handleChange} value={data.password} type='password' id='password' required />
+        <FormInput
+          label='Email'
+          name='email'
+          onChange={handleChange}
+          value={data.email}
+          type='email'
+          required
+        />
+        {/* Password*/}
+        <FormInput
+          label='Password'
+          name='password'
+          onChange={handleChange}
+          value={data.password}
+          type='password'
+          required
+        />
 
-        {/* Confirm password */}
-        <label htmlFor='confirmPassword'>Confirm Password</label>
-        <input name='confirmPassword' onChange={handleChange} value={data.confirmPassword} type='password' id='confirmPassword' required />
+        {/* ConfirmPassword */}
+        <FormInput
+          label='Confirm Password'
+          name='confirmPassword'
+          onChange={handleChange}
+          value={data.confirmPassword}
+          type='password'
+          required
+        />
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   )

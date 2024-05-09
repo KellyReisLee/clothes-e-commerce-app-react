@@ -1,16 +1,17 @@
 import React from 'react'
+import './form-input.styles.scss'
 
-const FormInput = ({ title, name, value, type, data, setData }) => {
+const FormInput = ({ label, ...props }) => {
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData({ ...data, [name]: value })
-
-  }
   return (
-    <div>
-      <label htmlFor={name}>{title}</label>
-      <input name={name} onChange={handleChange} value={value} type={type} id={name} required />
+    <div className='group'>
+      <input className='form-input' {...props} />
+      {
+        label && (
+          <label className={`${props.value.length ? 'shrink' : ''} form-input-label`}>{label}</label>
+        )
+      }
+
     </div>
   )
 }
