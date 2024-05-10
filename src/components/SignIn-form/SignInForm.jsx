@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './sign-in-form.styles.scss'
 import FormInput from '../FormInput/FormInput'
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from '../../utils/firebase.js'
 import Button from '../Button/Button'
+import { UserContext } from '../../context/Context.jsx'
 
 const SignInForm = () => {
   const [data, setData] = useState({
     email: '',
     password: ''
   })
+
+  const { setCurrentUser } = useContext(UserContext)
 
 
   const handleChange = (e) => {
@@ -22,12 +25,13 @@ const SignInForm = () => {
     const { email, password } = data;
     try {
 
-      const response = await signInAuthUserWithEmailAndPassword(email, password)
-      console.log(response);
+      const { user } = await signInAuthUserWithEmailAndPassword(email, password)
+      console.log(user);
       setData({
         email: '',
         password: ''
       })
+      setCurrentUser(user)
     } catch (error) {
       if (error.code === 'auth/invalid-credential') {
         console.log('Incorrect Credentials. Please, check your email and password.');
@@ -58,7 +62,7 @@ const SignInForm = () => {
           type='text'
           required
         />
-        {/* Display Name */}
+        {/* Password */}
         <FormInput
           label='Password'
           name='password'

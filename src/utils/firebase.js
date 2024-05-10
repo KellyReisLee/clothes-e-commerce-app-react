@@ -5,7 +5,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from 'firebase/auth'
 //getDoc - means get data from doc
 //setDoc - means set data from doc
@@ -86,5 +87,13 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return
 
   return signInWithEmailAndPassword(auth, email, password)
+
+}
+
+// Sign in user with email and password:
+export const signOutUser = async (email, password) => {
+  if (!email || !password) return
+
+  return await signOut(auth)
 
 }
