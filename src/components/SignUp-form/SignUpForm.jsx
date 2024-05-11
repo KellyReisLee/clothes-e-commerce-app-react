@@ -1,9 +1,9 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase';
 import FormInput from '../FormInput/FormInput';
 import './sign-up-form.styles.scss'
 import Button from '../Button/Button';
-import { UserContext } from '../../context/Context.jsx'
+
 
 const SignUpForm = () => {
   const [data, setData] = useState({
@@ -13,7 +13,7 @@ const SignUpForm = () => {
     confirmPassword: ''
   });
 
-  const { setCurrentUser } = useContext(UserContext)
+
 
   const { displayName, email, password, confirmPassword } = data;
 
@@ -26,14 +26,16 @@ const SignUpForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-
     try {
-      if (password !== confirmPassword) {
+      if (!displayName || !email || !password || !confirmPassword) {
+        alert('All fields are required!')
+        return
+
+      } else if (password !== confirmPassword) {
+        alert('Password and Confirm Password must match')
         return
       }
       const { user } = await createAuthUserWithEmailAndPassword(email, password)
-      setCurrentUser(user)
       await createUserDocumentFromAuth(user, { displayName })
       setData({
         displayName: '',
@@ -44,9 +46,9 @@ const SignUpForm = () => {
 
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
-        console.log('Email already exists!');
+        alert('Email already exists! Please sign in.');
       }
-      console.log('Failed creating user', error);
+      alert('Failed creating user', error);
     }
   }
   return (
