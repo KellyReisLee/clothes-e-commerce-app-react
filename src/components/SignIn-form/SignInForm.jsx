@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './sign-in-form.styles.scss'
 import FormInput from '../FormInput/FormInput'
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from '../../utils/firebase.js'
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from '../../utils/firebase.js'
 import Button from '../Button/Button'
 
 
@@ -10,8 +10,6 @@ const SignInForm = () => {
     email: '',
     password: ''
   })
-
-
 
 
   const handleChange = (e) => {
