@@ -4,10 +4,16 @@ import logo from '../../assets/crown.svg'
 import './navigation.styles.scss'
 import { UserContext } from '../../context/Context'
 import { signOutUser } from '../../utils/firebase.js'
+import { Badge } from '@mui/material'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import CartDropDown from '../CartDropDown/CartDropDown'
+import { CartContext } from '../../context/CartContext'
 
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
+  const { setIsCartOpen, isCartOpen } = useContext(CartContext)
+
 
   return (
     <>
@@ -23,9 +29,14 @@ const Navigation = () => {
           </NavLink>
           {
             currentUser ? (
-              <span onClick={signOutUser} className='nav-link'>
-                Sign Out
-              </span>
+              <>
+                <span onClick={signOutUser} className='nav-link'>
+                  Sign Out
+                </span>
+                <Badge onClick={() => setIsCartOpen(!isCartOpen)} badgeContent={4} color="primary">
+                  <ShoppingCartOutlinedIcon color="action" />
+                </Badge>
+              </>
             ) : (
               <NavLink className='nav-link' to='/auth'>
                 Sign in
@@ -33,7 +44,13 @@ const Navigation = () => {
             )
           }
         </div>
+        {
+          isCartOpen && (
+            <CartDropDown />
+          )
+        }
       </header>
+
       <Outlet />
     </>
   )
