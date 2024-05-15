@@ -7,12 +7,13 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+
 } from 'firebase/auth'
 //getDoc - means get data from doc
 //setDoc - means set data from doc
 
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore'
 
 
 const firebaseConfig = {
@@ -36,6 +37,42 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, GoogleProvider)
 //export const signInWithGoogleRedirect = () => signInWithRedirect(auth, GoogleProvider)
 export const db = getFirestore();
+
+
+
+// Sending the whole data:
+export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey)
+  const batch = writeBatch(db)
+
+  objectsToAdd.forEach(object => {
+    const docRef = doc(collectionRef, object.title.toLowerCase())
+    batch.set(docRef, object)
+  });
+
+  await batch.commit()
+  console.log('done');
+}
+
+
+export const getCategoriesAndDoc = async () => {
+  const collectionRef = collection(db, 'categories')
+
+  const q = query(collectionRef)
+  const querySnapshot = await getDocs(q)
+
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items
+    return acc
+  }, {})
+
+  return categoryMap
+
+
+
+
+}
 
 
 
