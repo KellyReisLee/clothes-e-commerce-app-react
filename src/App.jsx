@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Authentication from './routes/Authentication/Authentication'
 import Shop from "./routes/Shop/Shop";
 import CheckoutList from "./components/CheckoutList/CheckoutList";
+import ShopCategory from "./routes/ShopCategory/ShopCategory";
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="shop" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="checkout" element={<CheckoutList />} />
+        <Route path="shop/:category" element={<ShopCategory />} />
       </Route>
     </Routes>
 

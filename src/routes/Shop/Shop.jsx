@@ -2,9 +2,10 @@ import { useContext } from 'react'
 import { CategoriesContext } from '../../context/CategoriesContext'
 import './shop.styles.scss'
 import ProductCard from '../../components/ProductCard/ProductCard'
+import { Link } from 'react-router-dom'
 const Shop = () => {
   const { categoriesMap } = useContext(CategoriesContext)
-  console.log(Object.keys(categoriesMap));
+  //console.log(Object.keys(categoriesMap['hats']));
 
   return (
     <>
@@ -12,7 +13,7 @@ const Shop = () => {
         Object.keys(categoriesMap).map((title) => (
 
           <div key={title} className='categories-main'>
-            <h1>{title.toUpperCase()}</h1>
+            <Link to={`/shop/${title}`}><h1>{title.toUpperCase()}</h1></Link>
             <div className='categories-container'>
 
               {
