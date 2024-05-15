@@ -11,11 +11,11 @@ const Shop = () => {
     <>
       {
         Object.keys(categoriesMap).map((title) => (
-
           <div key={title} className='categories-main'>
-            <Link to={`/shop/${title}`}><h1>{title.toUpperCase()}</h1></Link>
+            <Link to={`/shop/${title}`}>
+              {title.toUpperCase()}
+            </Link>
             <div className='categories-container'>
-
               {
                 categoriesMap[title].slice(0, 4).map((product) => (
                   <ProductCard key={product.id} product={product} />
@@ -23,9 +23,6 @@ const Shop = () => {
               }
             </div>
           </div>
-
-
-
         ))
       }
 

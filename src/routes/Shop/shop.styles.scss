@@ -1,5 +1,17 @@
 .categories-main {
   margin: 0 4rem;
+
+  a {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #444;
+    transition: all 0.5s;
+  }
+
+  a:hover {
+    cursor: pointer;
+    color: #777;
+  }
 }
 
 .categories-container {
