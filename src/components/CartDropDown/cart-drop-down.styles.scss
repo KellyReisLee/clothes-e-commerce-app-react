@@ -12,8 +12,9 @@
   z-index: 5;
 
   .empty-message {
-    font-size: 18px;
-    margin: 50px auto;
+    font-size: 20px;
+    margin: 100px auto;
+    color: #777;
   }
 
   .cart-items {
@@ -24,7 +25,8 @@
     gap: 0.4rem;
   }
 
-  button {
-    margin-top: auto;
+  .link button {
+    width: 100%;
+    cursor: pointer;
   }
 }

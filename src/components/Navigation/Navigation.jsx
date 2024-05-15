@@ -12,11 +12,9 @@ import { CartContext } from '../../context/CartContext'
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { setIsCartOpen, isCartOpen, cartItems } = useContext(CartContext)
+  const { setIsCartOpen, isCartOpen, cartCount } = useContext(CartContext)
 
-  const totalItems = cartItems?.reduce((accumulator, item) => {
-    return accumulator + item.quantity
-  }, 0)
+
 
   return (
     <>
@@ -36,9 +34,11 @@ const Navigation = () => {
                 <span onClick={signOutUser} className='nav-link'>
                   Sign Out
                 </span>
-                <Badge onClick={() => setIsCartOpen(!isCartOpen)} badgeContent={totalItems} color="primary">
+
+                <Badge className='nav-link' onClick={() => setIsCartOpen(!isCartOpen)} badgeContent={cartCount} color="primary" >
                   <ShoppingCartOutlinedIcon color="action" />
                 </Badge>
+
               </>
             ) : (
               <NavLink className='nav-link' to='/auth'>
