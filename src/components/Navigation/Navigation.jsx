@@ -1,14 +1,14 @@
 import { useContext } from 'react'
 import { Outlet, Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/crown.svg'
-import './navigation.styles.scss'
+//import './navigation.styles.scss'
 import { UserContext } from '../../context/Context'
 import { signOutUser } from '../../utils/firebase.js'
 import { Badge } from '@mui/material'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import CartDropDown from '../CartDropDown/CartDropDown'
 import { CartContext } from '../../context/CartContext'
-
+import {NavigationContainer, ImageContainer, NavLinkComp, NavLinkItem } from './navigation.styles'
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -18,41 +18,41 @@ const Navigation = () => {
 
   return (
     <>
-      <header className='navigation'>
-        <div className='logo-container' >
+      <NavigationContainer className='navigation'>
+        <ImageContainer className='logo-container' >
           <Link to='/' >
-            <img className='logo' src={logo} alt='' />
+            <img  src={logo} alt='' />
           </Link>
-        </div>
-        <div className='nav-links-container'>
-          <NavLink className='nav-link' to='/shop'>
+        </ImageContainer>
+        <NavLinkComp>
+          <NavLinkItem className='nav-link' to='/shop'>
             Shop
-          </NavLink>
+          </NavLinkItem>
           {
             currentUser ? (
               <>
-                <span onClick={signOutUser} className='nav-link'>
+                <NavLinkItem as='span' onClick={signOutUser} className='nav-link'>
                   Sign Out
-                </span>
+                </NavLinkItem>
 
-                <Badge className='nav-link' onClick={() => setIsCartOpen(!isCartOpen)} badgeContent={cartCount} color="primary" >
+                <Badge  onClick={() => setIsCartOpen(!isCartOpen)} badgeContent={cartCount} color="primary" >
                   <ShoppingCartOutlinedIcon color="action" />
                 </Badge>
 
               </>
             ) : (
-              <NavLink className='nav-link' to='/auth'>
+              <NavLinkItem className='nav-link' to='/auth'>
                 Sign in
-              </NavLink>
+              </NavLinkItem>
             )
           }
-        </div>
+        </NavLinkComp>
         {
           isCartOpen && (
             <CartDropDown />
           )
         }
-      </header>
+      </NavigationContainer>
 
       <Outlet />
     </>
