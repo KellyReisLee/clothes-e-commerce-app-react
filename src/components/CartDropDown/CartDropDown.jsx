@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Button from '../Button/Button'
-import './cart-drop-down.styles.scss'
+import{CartContainer, CartItems, EmptyMessage} from './cart-drop-down.styles'
 import CartItem from '../CartItem/CartItem'
 import { CartContext } from '../../context/CartContext'
 import { Link } from 'react-router-dom'
@@ -8,10 +8,10 @@ const CartDropDown = () => {
   const { cartItems, setIsCartOpen } = useContext(CartContext)
   console.log(cartItems);
   return (
-    <div className='cart-container'>
-      <div className='cart-items'>
+    <CartContainer>
+      <CartItems>
         {
-          cartItems.length === 0 && <p className='empty-message'>Cart is Empty!</p>
+          cartItems.length === 0 && <EmptyMessage>Cart is Empty!</EmptyMessage>
         }
 
         {
@@ -19,13 +19,13 @@ const CartDropDown = () => {
             <CartItem key={item.id} cartItem={item} />
           ))
         }
-      </div>
+      </CartItems>
       <Link className='link' to='/checkout'>
         <Button >
           Checkout
         </Button>
       </Link>
-    </div>
+    </CartContainer>
   )
 }
 
