@@ -8,8 +8,7 @@ const ShopCategory = () => {
 
   const { category } = useParams()
   const { categoriesMap } = useContext(CategoriesContext)
-  console.log(category);
-  console.log(categoriesMap[category]);
+  
 
   return (
     <div className='categories-main-category'>

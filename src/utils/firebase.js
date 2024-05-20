@@ -17,12 +17,12 @@ import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDo
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDIFP4k3JKbqSVHvRcMXNIzjmnCdPufdaM",
-  authDomain: "e-commerce-crown-89620.firebaseapp.com",
-  projectId: "e-commerce-crown-89620",
-  storageBucket: "e-commerce-crown-89620.appspot.com",
-  messagingSenderId: "825939189960",
-  appId: "1:825939189960:web:5547fa9c08a7476b9285fd"
+  apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_FIREBASE_APP_ID
 };
 
 // Initialize Firebase

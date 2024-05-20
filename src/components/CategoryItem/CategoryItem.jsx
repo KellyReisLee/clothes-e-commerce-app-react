@@ -11,7 +11,7 @@ const CategoryItem = ({ category }) => {
       <ContainerCategory>
         <BackgroundImage
           className='background-image'
-          imageUrl={imageUrl}
+          imageurlitem={imageUrl}
         />
         <Body>
           <h2>{title}</h2>
