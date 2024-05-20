@@ -1,24 +1,23 @@
 
 import { Link } from 'react-router-dom';
-import './category-styles.styles.scss';
+import './category-styles.styles.jsx';
+import {BackgroundImage, Body, ContainerCategory} from './category-styles.styles.jsx'
 
 const CategoryItem = ({ category }) => {
 
   const { imageUrl, title } = category;
   return (
     <Link to={`/shop/${title}`}>
-      <div className='category-container'>
-        <div
+      <ContainerCategory>
+        <BackgroundImage
           className='background-image'
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-          }}
+          imageUrl={imageUrl}
         />
-        <div className='category-body-container'>
+        <Body>
           <h2>{title}</h2>
           <p>Shop Now</p>
-        </div>
-      </div>
+        </Body>
+      </ContainerCategory>
     </Link>
   );
 };
