@@ -1,6 +1,10 @@
 .categories-container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 1.6rem;
+  margin-top: 1rem;
+  justify-content: center;
+  margin-bottom: 2.2rem;
+ 
 }

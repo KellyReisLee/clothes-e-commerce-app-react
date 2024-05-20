@@ -10,8 +10,8 @@ export const BackgroundImage = styled.div`
 `
 
 export const Body = styled.div`
-    height: 90px;
-    padding: 0 25px;
+    height: 110px;
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +20,7 @@ export const Body = styled.div`
     background-color: white;
     opacity: 0.7;
     position: absolute;
+   
 
     h2 {
       font-weight: bold;
@@ -38,15 +39,14 @@ export const Body = styled.div`
 
 
 export const ContainerCategory = styled.div`
-min-width: 30%;
-  height: 240px;
-  flex: 1 1 auto;
+  min-width: 50%;
+  height: 41vh;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  margin: 0 7.5px 15px;
   overflow: hidden;
+  flex: 1;
   &:hover {
     cursor: pointer;
 
@@ -59,13 +59,7 @@ min-width: 30%;
       opacity: 0.9;
     }
   }
-  &:first-child {
-    margin-right: 7.5px;
-  }
-
-  &:last-child {
-    margin-left: 7.5px;
-  }
+  
 
   
 `
