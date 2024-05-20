@@ -30,11 +30,11 @@ const CheckoutItem = ({ item }) => {
             <h2 className='name'>{name}</h2>
           </div>
           <div className='checkout-qt equal-parts'>
-            <span className='arrow' onClick={addItemToCartItem}>
-              <ArrowBackIosNewOutlinedIcon />
+            <span className='arrow' >
+              <ArrowBackIosNewOutlinedIcon onClick={removeQtItemToCartItem}/>
             </span>
             <span className='value'>{quantity}</span>
-            <span className='arrow' onClick={removeQtItemToCartItem}>
+            <span className='arrow'onClick={addItemToCartItem} >
               <ArrowForwardIosOutlinedIcon />
             </span>
           </div>

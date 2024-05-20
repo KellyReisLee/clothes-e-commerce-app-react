@@ -6,7 +6,7 @@ import { CartContext } from '../../context/CartContext'
 import { Link } from 'react-router-dom'
 const CartDropDown = () => {
   const { cartItems, setIsCartOpen } = useContext(CartContext)
-  console.log(cartItems);
+ 
   return (
     <CartContainer>
       <CartItems>
