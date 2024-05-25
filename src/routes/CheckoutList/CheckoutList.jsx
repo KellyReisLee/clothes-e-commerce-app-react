@@ -3,7 +3,7 @@ import { CartContext } from '../../context/CartContext'
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem'
 import './checkout-list.styles.scss'
 const CheckoutList = () => {
-  const { cartItems, setIsCartOpen, total } = useContext(CartContext)
+  const { cartItems, setIsCartOpen, cartTotal } = useContext(CartContext)
 
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const CheckoutList = () => {
   return (
     <>
       {
-        cartItems.length === 0 && (
+        !cartItems&& (
           <div className='cart-empty'>
             <p>Cart is Empty</p>
           </div>
@@ -21,7 +21,7 @@ const CheckoutList = () => {
 
       }
       {
-        cartItems.length > 0 && (
+        cartItems && (
           <div className='checkout-main'>
             <div className='checkout-list-container' >
               <div className='checkout-header'>
@@ -47,7 +47,7 @@ const CheckoutList = () => {
                 ))
               }
 
-              <h3 className='total'>Total: $<span>{total}</span> </h3>
+              <h3 className='total'>Total: $<span>{cartTotal}</span> </h3>
               <hr className='line-item' />
             </div>
           </div>

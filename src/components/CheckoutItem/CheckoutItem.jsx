@@ -31,7 +31,7 @@ const CheckoutItem = ({ item }) => {
           </div>
           <div className='checkout-qt equal-parts'>
             <span className='arrow' >
-              <ArrowBackIosNewOutlinedIcon onClick={removeQtItemToCartItem}/>
+              <ArrowBackIosNewOutlinedIcon  onClick={removeQtItemToCartItem}/>
             </span>
             <span className='value'>{quantity}</span>
             <span className='arrow'onClick={addItemToCartItem} >

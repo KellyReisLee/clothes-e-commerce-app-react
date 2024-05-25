@@ -7,14 +7,14 @@ width: 100%;
 display: flex;
 justify-content: space-between;
 margin-bottom: 1rem;
-padding: 1rem;
+padding: 0.6rem;
 align-items: center;
+
 `
 
 export const ImageContainer = styled.div`
-width:100%;
-height: 100S%;
 padding: 25px;
+
 `
 
 
@@ -25,6 +25,7 @@ display: flex;
 align-items: center;
 justify-content: flex-end;
 gap: 1rem;
+
 
 `
 
