@@ -1,6 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
-import { onAuthStateChangedListener, createUserDocumentFromAuth } from '../utils/firebase.js'
-//o valor que será compartilhado.
+
 
 export const UserContext = createContext({
   currentUser: null,
@@ -50,17 +49,6 @@ const setCurrentUser = (user) =>{
 
   const value = { currentUser, setCurrentUser }
 
-  useEffect(() => {
-     onAuthStateChangedListener((user) => {
-      if (user) {
-       
-        createUserDocumentFromAuth(user)
-      }
-      setCurrentUser(user)
-    })
-
-
-  }, [])
 
 
   return <UserContext.Provider value={value}>
