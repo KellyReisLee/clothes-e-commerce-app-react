@@ -8,8 +8,12 @@ import ShopCategory from "./routes/ShopCategory/ShopCategory";
 import Shop from "./routes/Shop/Shop";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { onAuthStateChangedListener, createUserDocumentFromAuth } from '../src/utils/firebase'
+import { onAuthStateChangedListener, createUserDocumentFromAuth, getCategoriesAndDoc } from './utils/firebase.js'
 import {setCurrentUser} from './store/user/user-action'
+import { setCategoriesMap } from './store/categories/category-actions.js';
+
+
+//import SHOP_DATA from '../shop-data.js'
 
 const App = () => {
 const dispatch = useDispatch()
@@ -17,7 +21,6 @@ const dispatch = useDispatch()
   useEffect(() => {
     onAuthStateChangedListener((user) => {
      if (user) {
-      
        createUserDocumentFromAuth(user)
      }
      dispatch(setCurrentUser(user))
@@ -25,6 +28,17 @@ const dispatch = useDispatch()
 
 
  }, [])
+
+
+ useEffect(() => {
+  const getCategories = async () => {
+    const categoriesMap = await getCategoriesAndDoc('categories');
+    dispatch(setCategoriesMap(categoriesMap))
+    //console.log(categoriesMap)
+   
+  }
+  getCategories()
+}, [])
 
   return (
     <Routes>
