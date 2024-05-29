@@ -26,7 +26,7 @@ const Navigation = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartCount = useSelector(selectCartCount);
   const dispatch = useDispatch();
-  console.log(cartCount)
+  
   
 
   function toogle() {
