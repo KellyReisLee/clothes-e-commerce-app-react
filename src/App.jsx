@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { onAuthStateChangedListener, createUserDocumentFromAuth, getCategoriesAndDoc } from './utils/firebase.js'
 import {setCurrentUser} from './store/user/user-action'
-import { setCategories } from './store/categories/category-actions.js';
+import { fetchCategoriesAsync, setCategories } from './store/categories/category-actions.js';
 
 
 //import SHOP_DATA from '../shop-data.js'
@@ -31,13 +31,7 @@ const dispatch = useDispatch()
 
 
  useEffect(() => {
-  const getCategories = async () => {
-    const categoriesMap = await getCategoriesAndDoc('categories');
-    dispatch(setCategories(categoriesMap))
-   // console.log(categoriesMap)
-   
-  }
-  getCategories()
+  dispatch(fetchCategoriesAsync())
 }, [])
 
   return (

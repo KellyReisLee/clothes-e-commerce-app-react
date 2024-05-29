@@ -3,6 +3,7 @@ import logger from 'redux-logger'
 
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { thunk } from 'redux-thunk'
 
 
 import { rootReducer } from './root-reducer'
@@ -10,7 +11,7 @@ import { rootReducer } from './root-reducer'
 const persistConfig = {
   key: 'root',
   storage,
-  blackList: ['user']
+  whiteList: ['cart']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -25,7 +26,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 //production: Indica que a aplicação está sendo executada em um ambiente de produção.
 //test: Indica que a aplicação está sendo executada em um ambiente de teste.
 
-const middlewares = [process.env.NODE_ENV === 'development' && logger].filter(Boolean)
+const middlewares = [process.env.NODE_ENV === 'development' && logger, thunk].filter(Boolean)
 console.log(process.env.NODE_ENV)
 
 const composeEnhancer = (
