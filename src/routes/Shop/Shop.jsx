@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux'
 const Shop = () => {
 
   const categoriesMap= useSelector(selectCategoriesMap)  
-  console.log(categoriesMap)
+  
 
   return (
     <>
