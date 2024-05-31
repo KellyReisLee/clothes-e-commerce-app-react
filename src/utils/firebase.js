@@ -25,6 +25,8 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_FIREBASE_APP_ID
 };
 
+
+
 // Initialize Firebase
 const fireBaseApp = initializeApp(firebaseConfig);
 
@@ -124,3 +126,5 @@ export const signOutUser = async () => await signOut(auth);
 
 // Sign in Observer Listener:
 export const onAuthStateChangedListener = async (callback) => onAuthStateChanged(auth, callback)
+
+export default fireBaseApp
