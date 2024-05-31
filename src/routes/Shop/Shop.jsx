@@ -13,13 +13,13 @@ const Shop = () => {
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
   const error = useSelector(selectCategoriesError);
-  console.log(error);
+
 
   return (
     <>
       {Object.keys(categoriesMap).map((title) => (
         <div key={title} className="categories-main">
-          {error.message && <p className="error">{error.message}</p>}
+          {error && <p className="error">{error.message}</p>}
           <Link to={`/shop/${title}`}>{title.toUpperCase()}</Link>
 
           <div className="categories-container">
