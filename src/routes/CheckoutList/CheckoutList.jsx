@@ -4,6 +4,8 @@ import {selectCartItems, selectCartTotal} from '../../store/cart/cart-selector'
 import { useSelector, useDispatch } from 'react-redux'
 import {setIsCartOpen} from '../../store/cart/cart-actions'
 import './checkout-list.styles.scss'
+import PaymentForm from '../../components/PaymentForm/PaymentForm'
+
 const CheckoutList = () => {
 
 const cartItems = useSelector(selectCartItems)
@@ -52,8 +54,9 @@ const dispatch = useDispatch()
                 ))
               }
 
-              <h3 className='total'>Total: $<span>{cartTotal}</span> </h3>
+              <h3 className='total'>Total: $<span>{cartTotal}</span></h3>
               <hr className='line-item' />
+              <PaymentForm/>
             </div>
           </div>
         )

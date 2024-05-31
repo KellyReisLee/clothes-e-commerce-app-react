@@ -14,7 +14,6 @@ const CategoryProducts = () => {
   
   return (
     <>
-  
     <div className='categories-container'>
 
       {
@@ -25,7 +24,6 @@ const CategoryProducts = () => {
           ))
         )
       }
-
 
     </div>
     </>
