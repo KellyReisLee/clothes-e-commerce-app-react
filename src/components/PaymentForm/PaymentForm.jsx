@@ -22,7 +22,7 @@ const PaymentForm = () => {
     if (!stripe || !elements) return;
 
     setProcessPayment(true)
-    const response = await fetch('/.netlify/functions/create-payment-intent',{
+    const response = await fetch('https://clothes-e-commerce-app-react-h0gt6zsz9-kellyreislees-projects.vercel.app/.netlify/functions/create-payment-intent',{
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
