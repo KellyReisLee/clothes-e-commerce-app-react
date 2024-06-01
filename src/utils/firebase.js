@@ -11,7 +11,7 @@ import {
 
 } from 'firebase/auth'
 //getDoc - means get data from doc
-//setDoc - means set data from doc
+
 
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore'
 

@@ -13,6 +13,11 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",  // Permitir todas as origens (você pode restringir para origens específicas se necessário)
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST",  // Métodos permitidos (GET, POST, etc.)
+      },
       body: JSON.stringify({ paymentIntent }),
     };
   } catch (error) {

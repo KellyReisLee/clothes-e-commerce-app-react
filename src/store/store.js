@@ -27,7 +27,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 //test: Indica que a aplicação está sendo executada em um ambiente de teste.
 
 const middlewares = [process.env.NODE_ENV === 'development' && logger, thunk].filter(Boolean)
-console.log(process.env.NODE_ENV)
+
 
 const composeEnhancer = (
   process.env.NODE_ENV !== 'production' && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

@@ -8,9 +8,6 @@ import Spinner from '../../components/Spinner/Spinner'
 
 const CategoryProducts = () => {
   const isLoading = useSelector(selectCategoriesIsLoading)
-  console.log(isLoading)
- 
-  
   
   return (
     <>
